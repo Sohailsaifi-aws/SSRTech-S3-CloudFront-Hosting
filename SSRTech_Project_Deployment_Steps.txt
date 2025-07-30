@@ -1,0 +1,35 @@
+
+___________  SSRTech S3 & CloudFront Hosting_______________
+
+1. S3 Bucket se Static Website Hosting:
+                      Go-to-AWS console → S3 → Create Bucket
+                           Name → (web-bucket-try) 
+           Then, Uncheck: Block all public access → Select I acknowledge..
+                                     → Create Bucket
+
+            Upload my (static-website-data) file to this bucket
+               →Now open Properties → Static Website Hosting 
+               →copy Endpoint URL → open it in browser to test
+
+
+2. CloudFront Distribution
+                     Go to CloudFront → Create Distribution
+                     Distribution Name → (distribution-try)	
+                     Choose → Amazon S3x
+                     Origin → Choose my S3 static website hosting endpoint 
+                     Alternate domain name → www.ssrtech.cloud
+                     SSL certificate
+                                                      →Then, Click Create Distribution
+
+
+3. Route 53: Custom Domain Setup
+                                     Go to Route 53 → Hosted Zones
+	            Create a hosted zone for → (ssrtech.cloud)
+         Add Record → Record name (www) → Record Type (A)
+         Alias (ON) → Route traffic to (alias to cloudfront distribution)
+         Then, Select → (Distribution domain name)
+                    → Save Record
+
+Now, use the custom domain name (www.ssrtech.cloud) to access the website. Simply open the domain in your browser to view the live site
+
+
